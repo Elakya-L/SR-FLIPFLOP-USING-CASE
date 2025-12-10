@@ -34,15 +34,48 @@ The maximum possible groupings of adjacent ones are already shown in the figure.
 
 **Procedure**
 
-/* write all the steps invloved */
+
+1. **Write the SR flip-flop Verilog code** using `always @(posedge clk)` to implement Set, Reset, No-change, and Invalid conditions.
+2. **Create a testbench** with clock generation and input signals S and R.
+3. **Apply all SR input combinations** (00, 01, 10, 11) during simulation.
+4. **Run the simulation** and observe the output waveforms of Q and Q̅.
+5. **Verify outputs** match the SR flip-flop functional table for each input case.
+
+
+
+
+
 
 **PROGRAM**
+```
 
-/* Program for flipflops and verify its truth table in quartus using Verilog programming. Developed by: RegisterNumber:
-*/
+module srflipflop(s,r,clk,q,qbar);
+input s,r,clk;
+output reg q;
+output reg qbar;
+initial 
+begin
+q=0;
+qbar=1;
+end
+always @(posedge clk)
+begin
+   q=s|(~r&q);
+   qbar=r|(~s&~q);
+end
+endmodule
+```
+
 
 **RTL LOGIC FOR FLIPFLOPS**
+<img width="1920" height="1080" alt="Screenshot 2025-12-10 114104" src="https://github.com/user-attachments/assets/0d1849e1-d9ad-4d73-94aa-45b5af2442bc" />
+
+
 
 **TIMING DIGRAMS FOR FLIP FLOPS**
+<img width="1920" height="1080" alt="Screenshot 2025-12-10 114731" src="https://github.com/user-attachments/assets/f2230199-07fd-47e9-a34a-6acea57e63c8" />
+
 
 **RESULTS**
+Thus the OUTPUT’s of SR Flip Flop is verified by synthesizing and simulating the VERILOG code
+
